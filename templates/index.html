@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Telegram Web Client</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f5f5f5; }
+        .message { padding: 10px; background: #fff; margin-bottom: 10px; border-radius: 8px; }
+        form { margin-top: 20px; }
+        input, textarea { width: 100%; padding: 8px; margin-top: 8px; border-radius: 4px; border: 1px solid #ccc; }
+        button { padding: 10px 20px; border: none; border-radius: 4px; background: #007bff; color: white; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Telegram Web Client</h1>
+    <a href="/logout">Выйти</a>
+
+    {% for msg in messages %}
+        <div class="message">
+            <strong>{{ msg.from }}</strong>: {{ msg.text }} <br>
+            <small>Chat ID: {{ msg.chat_id }}</small>
+        </div>
+    {% endfor %}
+
+    <form method="post">
+        <input type="text" name="chat_id" placeholder="Chat ID" required>
+        <textarea name="text" placeholder="Ответ..." rows="3" required></textarea>
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+</html>
